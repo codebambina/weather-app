@@ -46,7 +46,7 @@ function search(city) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemperature);
 }
 
-function findCity() {
+function findCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search-input").value;
   search(city);
