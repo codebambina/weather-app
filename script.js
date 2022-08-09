@@ -5,9 +5,9 @@ let now = new Date();
 let days = [
   "Sunday",
   "Monday",
-  "Tueday",
+  "Tuesday",
   "Wednesday",
-  "Thusday",
+  "Thursday",
   "Friday",
   "Saturday",
 ];
