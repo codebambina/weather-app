@@ -14,7 +14,7 @@ let days = [
 let day = days[now.getDay()];
 let hours = now.getHours();
 let minutes = now.getMinutes();
-minutes = ("0" + now.getMinutes()).slice(-2);
+minutes = ("0" + now.getMinutes()).slice(-2); // put a 0 in front and take the right two characters
 let time = `${hours}:${minutes}`;
 
 let currentTime = document.querySelector("#current-time");
@@ -23,7 +23,7 @@ currentTime.innerHTML = `${day} ${time}`;
 function getTemperature(response) {
   document.querySelector("#currentTemp").innerHTML = `${Math.round(
     response.data.main.temp
-  )}°C`;
+  )}`;
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#feelsLike").innerHTML = `${Math.round(
     response.data.main.feels_like
@@ -36,6 +36,10 @@ function getTemperature(response) {
   )} km/h`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
+  let iconNum = response.data.weather[0].icon;
+  let iconUrl = `http://openweathermap.org/img/wn/${iconNum}@2x.png`;
+  document.querySelector("#mainIcon").innerHTML = "iconUrl";
+  document.getElementById("mainIcon").src = `${iconUrl}`;
 }
 
 function search(city) {
@@ -66,6 +70,27 @@ function searchLocation(position) {
 function currentLocation() {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+function convertToF() {
+  let units = "imperial";
+  let cityF = document.querySelector("h1").innerHTML;
+  let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
+  let apiEndPoint = "https://api.openweathermap.org/data";
+  let apiUrl = `${apiEndPoint}/2.5/weather?q=${cityF}&units=${units}`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemperature);
+}
+function convertToC() {
+  let units = "metric";
+  let cityC = document.querySelector("h1").innerHTML;
+  let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
+  let apiEndPoint = "https://api.openweathermap.org/data";
+  let apiUrl = `${apiEndPoint}/2.5/weather?q=${cityC}&units=${units}`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemperature);
+}
+let fahrenheitElement = document.querySelector("#fahrenheit");
+fahrenheitElement.addEventListener("click", convertToF);
+
+let celsiusElement = document.querySelector("#celsius");
+celsiusElement.addEventListener("click", convertToC);
 
 let locationButton = document.querySelector("#locationButton");
 locationButton.addEventListener("click", currentLocation);
