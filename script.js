@@ -54,6 +54,8 @@ function findCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search-input").value;
   search(city);
+  document.getElementById("celsius").style.color = "#9adcff";
+  document.getElementById("fahrenheit").style.color = "#ff8aae";
 }
 
 let form = document.querySelector("#search-form");
@@ -66,6 +68,8 @@ function searchLocation(position) {
   let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemperature);
+  document.getElementById("celsius").style.color = "#9adcff";
+  document.getElementById("fahrenheit").style.color = "#ff8aae";
 }
 function currentLocation() {
   navigator.geolocation.getCurrentPosition(searchLocation);

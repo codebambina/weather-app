@@ -97,9 +97,10 @@ p:first-letter {
   margin: 30px auto;
   max-width: 600px;
 }
-#celsius,
-#fahrenheit,
-a:hover {
+#celsius {
+color: #9adcff;
+}
+#celsius, #fahrenheit, a:hover {
   cursor: default;
 }
 #currentTemp {
