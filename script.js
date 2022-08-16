@@ -27,13 +27,13 @@ function getTemperature(response) {
   document.querySelector("h1").innerHTML = response.data.name;
   document.querySelector("#feelsLike").innerHTML = `${Math.round(
     response.data.main.feels_like
-  )}°C`;
+  )}`;
   document.querySelector(
     "#humidity"
   ).innerHTML = `${response.data.main.humidity}%`;
   document.querySelector("#wind").innerHTML = `${Math.round(
     response.data.wind.speed
-  )} km/h`;
+  )}`;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].description;
   let iconNum = response.data.weather[0].icon;
@@ -77,6 +77,8 @@ function currentLocation() {
 function convertToF() {
   document.getElementById("fahrenheit").style.color = "#9adcff ";
   document.getElementById("celsius").style.color = "#ff8aae";
+  document.querySelector("#unitsDegrees").innerHTML = "°F";
+  document.querySelector("#unitsSpeed").innerHTML = "mph";
   let units = "imperial";
   let cityF = document.querySelector("h1").innerHTML;
   let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
@@ -87,6 +89,9 @@ function convertToF() {
 function convertToC() {
   document.getElementById("celsius").style.color = "#9adcff";
   document.getElementById("fahrenheit").style.color = "#ff8aae";
+  document.querySelector("#unitsDegrees").innerHTML = "°C";
+  document.querySelector("#unitsSpeed").innerHTML = "m/s";
+
   let units = "metric";
   let cityC = document.querySelector("h1").innerHTML;
   let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
