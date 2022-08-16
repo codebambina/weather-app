@@ -71,6 +71,8 @@ function currentLocation() {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 function convertToF() {
+  document.getElementById("fahrenheit").style.color = "#9adcff ";
+  document.getElementById("celsius").style.color = "#ff8aae";
   let units = "imperial";
   let cityF = document.querySelector("h1").innerHTML;
   let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
@@ -79,6 +81,8 @@ function convertToF() {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getTemperature);
 }
 function convertToC() {
+  document.getElementById("celsius").style.color = "#9adcff";
+  document.getElementById("fahrenheit").style.color = "#ff8aae";
   let units = "metric";
   let cityC = document.querySelector("h1").innerHTML;
   let apiKey = "4eb5bd3fa558dedffa809dd06956430e";
