@@ -13,6 +13,9 @@ let days = [
 ];
 let day = days[now.getDay()];
 let hours = now.getHours();
+if (hours < 10) {
+  hours = "0" + hours;
+}
 let minutes = now.getMinutes();
 minutes = ("0" + now.getMinutes()).slice(-2); // put a 0 in front and take the right two characters
 let time = `${hours}:${minutes}`;
