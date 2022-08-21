@@ -23,6 +23,10 @@ let time = `${hours}:${minutes}`;
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${day} ${time}`;
 
+function displayForecast();
+
+
+
 function getTemperature(response) {
   document.querySelector("#currentTemp").innerHTML = `${Math.round(
     response.data.main.temp
